@@ -1,13 +1,13 @@
 <template>
 
-    <input :name="name" v-model="value" />
+<input :name="name" :value="value" class="inpt" placeholder="Write Todo"/>
 
 </template>
 
 <script>
 export default {
   name: 'Input',
-  props: ['name', 'value',],
+  props: ['name','value'],
   methods: {}
 }
 </script>
@@ -18,7 +18,9 @@ export default {
 .inpt {
    height:  30px;
    margin: 10px;
-   border: 1px solid black;
+   background-color: transparent;
+   border: 2px solid black;
+   /* border-bottom: 1px solid black; */
    border-radius: 5px;
    text-align: center;
 }

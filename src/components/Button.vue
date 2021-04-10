@@ -1,11 +1,11 @@
 <template>
-    <button class="btn" ref="btn" @mouseleave="hoverOut" @mouseenter="hover" @click="onClick">Hello</button>
+    <button class="btn" ref="btn" @mouseleave="hoverOut" @mouseenter="hover" @click="onClick">{{btnName}}</button>
 </template>
 
 <script>
 export default {
   name: 'Button',
-  props: [],
+  props: ['btnName'],
   methods: {
       hover(){
           this.$refs['btn'].classList.replace('btn','hover');
@@ -26,9 +26,9 @@ export default {
 .btn {
     background-color: transparent;
     border: 2px solid black;
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
-    width: 10vw;
+    font-weight: bold;
 }
 
 .hover{
@@ -36,8 +36,8 @@ export default {
     border: 2px solid black;
     border-radius: 5px;
     color: white;
-    padding: 5px;
-    width: 10vw;
+    padding: 10px;
+    font-weight: bold;
 }
 
 </style>
