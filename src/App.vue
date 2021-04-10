@@ -1,15 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div>
+
+<Input name="Todo" :value="text" @input=changeText($event) />
+<Button @onClick="helloClick" />
+</div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Button from './components/Button.vue';
+import Input from './components/input.vue';
 
 export default {
   name: 'App',
+  data(){
+    return{
+      text: ''
+    }
+  },
   components: {
-    HelloWorld
+    Button,
+    Input
+  },
+  methods: {
+    helloClick(){
+      console.log('Text',this.text);
+    },
+    changeText(event){
+      this.text = event.target.value;
+       console.log('Agaya',event.target.value);
+    }
   }
 }
 </script>
@@ -21,6 +41,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 </style>
