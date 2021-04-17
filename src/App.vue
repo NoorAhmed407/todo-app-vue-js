@@ -7,8 +7,8 @@
       <Button btnName="Add Todo" @onClick="helloClick" />
     </div>
     <div v-if="todos.length > 0">
-      <ul :v-for="item in todos">
-          <li>{{item}}</li>
+      <ul>
+          <li v-for="(todo, index) in todos" :key=index>{{todo}}</li>
       </ul>
     </div>
   </div>
@@ -22,21 +22,24 @@ import Input from './components/input.vue';
 
 export default {
   name: 'App',
-  data(){
+  data() {
     return{
       text: '',
       todos: []
-    }
+    };
   },
   components: {
     Button,
     Input
   },
+  
   methods: {
     helloClick(){
-     this.todos.push(this.text);
-     this.text = "";
-     console.log(this.todos);
+      console.log('Todos',this.todos);
+      console.log('Text',this.text);
+      this.todos.push(this.text);
+      console.log(JSON.parse(JSON.stringify(this.todos)));
+      this.text = "";
     },
     changeText(event){
       this.text = event.target.value;
