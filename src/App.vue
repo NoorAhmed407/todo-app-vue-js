@@ -4,13 +4,14 @@
   <h1>Todo App</h1>
     <div class="inputBox">
       <Input name="todo" :value="text" @input="changeText($event)"  />
-      <Button btnName="Add Todo" @onClick="helloClick" />
+      <Button btnName="Add Todo" @onClick="addTodo" />
     </div>
     <div v-if="todos.length > 0">
-      <ul>
-          <li v-for="(todo, index) in todos" :key=index>{{todo}}</li>
-      </ul>
-    </div>
+          <div class="todostrip" v-for="(todo, index) in todos" :key=index>
+            <div><h2>{{todo}}</h2></div>
+            <div><Button btnName="Delete" @onClick="deleteTodo(todo)" /></div>
+          </div>
+      </div>
   </div>
 </div>
 
@@ -34,9 +35,8 @@ export default {
   },
   
   methods: {
-    helloClick(){
+    addTodo(){
       console.log('Todos',this.todos);
-      console.log('Text',this.text);
       this.todos.push(this.text);
       console.log(JSON.parse(JSON.stringify(this.todos)));
       this.text = "";
@@ -44,6 +44,11 @@ export default {
     changeText(event){
       this.text = event.target.value;
        console.log('Agaya',event.target.value);
+    },
+    deleteTodo(item){
+      console.log('Item', item);
+      this.todos = this.todos.filter((val,ind)=> val !== item);
+      console.log('After Delete', JSON.parse(JSON.stringify(this.todos)));
     }
   }
 }
@@ -75,4 +80,15 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
+.todostrip{
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0px;
+}
+
 </style>
